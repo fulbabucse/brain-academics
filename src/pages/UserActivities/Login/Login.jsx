@@ -1,12 +1,29 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/UserProvider";
 
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const handleUserSignIn = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signInUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+        toast.success("Successfully logged your account!!");
+      });
   };
   const handleGoogleSignIn = () => {};
   const handleFacebookSignIn = () => {};
