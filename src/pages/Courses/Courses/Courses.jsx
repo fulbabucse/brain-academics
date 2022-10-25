@@ -10,7 +10,7 @@ const Courses = () => {
       <div>
         {courses.map((course) => (
           <p key={course.id}>
-            <Link to={`/course/${course.id}`}>{course.name}</Link>
+            <Link to={`/course/${course.category_id}`}>{course.name}</Link>
           </p>
         ))}
       </div>
