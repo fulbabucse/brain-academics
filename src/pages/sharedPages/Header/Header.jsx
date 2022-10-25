@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaTh, FaTimes } from "react-icons/fa";
+import UserThumb from "../../../assets/user2.png";
 
 function Header() {
   const [navbar, setNavbar] = useState(false);
@@ -54,70 +55,15 @@ function Header() {
                 <Link to="/faq">FAQ</Link>
               </li>
 
-              {/* <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
-                <div className="form-control">
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Remember me</span>
-                    <input
-                      type="checkbox"
-                      className="toggle toggle-primary"
-                      checked
-                    />
-                  </label>
-                </div>
-              </li> */}
-
-              {/* <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
-                <div className="dropdown dropdown-end">
-                  <label
-                    tabIndex={0}
-                    className="btn btn-ghost btn-circle avatar"
-                  >
-                    <div className="w-10 rounded-full border-2 border-amber-400">
-                      <img src={user?.photoURL || userLogo} />
-                    </div>
-                  </label>
-                  <ul
-                    tabIndex={0}
-                    className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-                  >
-                    <li>
-                      {user?.uid && (
-                        <Link
-                          to="/profile"
-                          className="justify-center text-slate-800 mb-1"
-                        >
-                          {user?.displayName || "Profile"}
-                        </Link>
-                      )}
-                    </li>
-                    <li>
-                      {user?.uid ? (
-                        <button
-                          onClick={signOutUser}
-                          className="btn btn-sm btn-secondary"
-                        >
-                          Log out
-                        </button>
-                      ) : (
-                        <Link to="/login" className="p-0 mt-1">
-                          <button className="btn btn-sm btn-secondary w-full">
-                            Log In
-                          </button>
-                        </Link>
-                      )}
-                    </li>
-
-                    <li>
-                      <Link to="/register" className="p-0 mt-1">
-                        <button className="btn btn-sm btn-primary w-full">
-                          Register
-                        </button>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </li> */}
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
+                <Link to="/profile">
+                  <img
+                    className="w-12 h-12 rounded-full"
+                    src={UserThumb}
+                    alt="User"
+                  />
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

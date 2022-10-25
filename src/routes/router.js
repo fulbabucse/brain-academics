@@ -7,6 +7,7 @@ import FAQ from "../pages/FAQ/FAQ";
 import Home from "../pages/Home/Home";
 import CourseDetails from "../pages/sharedPages/CourseDetails/CourseDetails";
 import Premium from "../pages/sharedPages/Premium/Premium";
+import Profile from "../pages/UserActivities/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/single-courses/${params.id}`),
         element: <Premium></Premium>,
       },
+      { path: "profile", element: <Profile></Profile> },
     ],
   },
 ]);
