@@ -1,9 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
+import Header from "../pages/sharedPages/Header/Header";
 
 const Root = () => {
   return (
     <div>
-      <h1>This is Root file</h1>
+      <Header></Header>
+      <Outlet></Outlet>
     </div>
   );
 };

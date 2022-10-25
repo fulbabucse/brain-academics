@@ -6,7 +6,7 @@ function Header() {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <nav className="w-full bg-transparent">
+    <nav className="w-full bg-slate-700">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -30,7 +30,7 @@ function Header() {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 lg:mt-8 md:block md:pb-0 md:mt-0 ${
+            className={`flex-1 justify-self-center pb-3 md:block md:pb-0 md:mt-0 ${
               navbar ? "block" : "hidden"
             }`}
           >
@@ -52,6 +52,19 @@ function Header() {
 
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
                 <Link to="/contact">Contact</Link>
+              </li>
+
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+                <div className="form-control">
+                  <label className="label cursor-pointer">
+                    <span className="label-text">Remember me</span>
+                    <input
+                      type="checkbox"
+                      className="toggle toggle-primary"
+                      checked
+                    />
+                  </label>
+                </div>
               </li>
 
               {/* <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
