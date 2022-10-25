@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 function Header() {
-  const { user } = useContext(AuthContext);
+  const { user, signOutUser } = useContext(AuthContext);
   const [navbar, setNavbar] = useState(false);
 
   return (
@@ -65,7 +65,11 @@ function Header() {
                     className="btn btn-ghost btn-circle avatar"
                   >
                     <div className="w-10 rounded-full">
-                      <img src="https://placeimg.com/80/80/people" />
+                      <img
+                        src={user?.photoURL || UserThumb}
+                        alt={user?.displayName || "User"}
+                        title={user?.displayName || "User Profile"}
+                      />
                     </div>
                   </label>
                   <ul
@@ -77,11 +81,20 @@ function Header() {
                         {user?.displayName || "Profile"}
                       </Link>
                     </li>
-                    <Link to="/login" className="my-2">
-                      <button className="btn btn-sm btn-secondary rounded-sm w-full">
-                        Log In
+                    {user?.uid && user?.email ? (
+                      <button
+                        onClick={signOutUser}
+                        className="btn btn-sm btn-secondary rounded-sm my-2"
+                      >
+                        Log Out
                       </button>
-                    </Link>
+                    ) : (
+                      <Link to="/login" className="my-2">
+                        <button className="btn btn-sm btn-secondary rounded-sm w-full">
+                          Log In
+                        </button>
+                      </Link>
+                    )}
 
                     <Link to="/register">
                       <button className="btn btn-sm btn-outline rounded-sm btn-secondary w-full">

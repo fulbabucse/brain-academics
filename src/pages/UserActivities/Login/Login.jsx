@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, signInGoogleUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const handleUserSignIn = (e) => {
     e.preventDefault();
@@ -25,7 +25,12 @@ const Login = () => {
         toast.success("Successfully logged your account!!");
       });
   };
-  const handleGoogleSignIn = () => {};
+  const handleGoogleSignIn = () => {
+    signInGoogleUser().then((res) => {
+      console.log(res.user);
+      toast.success("Successfully logged with your Google account!!");
+    });
+  };
   const handleFacebookSignIn = () => {};
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
