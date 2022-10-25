@@ -7,7 +7,9 @@ import FAQ from "../pages/FAQ/FAQ";
 import Home from "../pages/Home/Home";
 import CourseDetails from "../pages/sharedPages/CourseDetails/CourseDetails";
 import Premium from "../pages/sharedPages/Premium/Premium";
+import Login from "../pages/UserActivities/Login/Login";
 import Profile from "../pages/UserActivities/Profile/Profile";
+import Register from "../pages/UserActivities/Register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,8 @@ export const router = createBrowserRouter([
         element: <Premium></Premium>,
       },
       { path: "profile", element: <Profile></Profile> },
+      { path: "login", element: <Login></Login> },
+      { path: "register", element: <Register></Register> },
     ],
   },
 ]);

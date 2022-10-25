@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState("");

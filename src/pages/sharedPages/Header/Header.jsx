@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaTh, FaTimes } from "react-icons/fa";
 import UserThumb from "../../../assets/user2.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/UserProvider";
 
 function Header() {
+  const { user } = useContext(AuthContext);
   const [navbar, setNavbar] = useState(false);
 
   return (
@@ -55,14 +58,38 @@ function Header() {
                 <Link to="/faq">FAQ</Link>
               </li>
 
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <Link to="/profile">
-                  <img
-                    className="w-12 h-12 rounded-full"
-                    src={UserThumb}
-                    alt="User"
-                  />
-                </Link>
+              <li className="text-slate-500 text-center hover:text-slate-700 transition-all duration-500 uppercase text-sm font-bold">
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img src="https://placeimg.com/80/80/people" />
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 p-3 menu menu-compact dropdown-content bg-base-100 shadow-xl rounded-md w-52"
+                  >
+                    <li>
+                      <Link to="/profile" className="justify-center">
+                        {user?.displayName || "Profile"}
+                      </Link>
+                    </li>
+                    <Link to="/login" className="my-2">
+                      <button className="btn btn-sm btn-secondary rounded-sm w-full">
+                        Log In
+                      </button>
+                    </Link>
+
+                    <Link to="/register">
+                      <button className="btn btn-sm btn-outline rounded-sm btn-secondary w-full">
+                        Register
+                      </button>
+                    </Link>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>
