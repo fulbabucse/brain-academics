@@ -51,10 +51,10 @@ function Header() {
               </li>
 
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
-                <Link to="/contact">Contact</Link>
+                <Link to="/faq">FAQ</Link>
               </li>
 
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+              {/* <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
                 <div className="form-control">
                   <label className="label cursor-pointer">
                     <span className="label-text">Remember me</span>
@@ -65,7 +65,7 @@ function Header() {
                     />
                   </label>
                 </div>
-              </li>
+              </li> */}
 
               {/* <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
                 <div className="dropdown dropdown-end">
