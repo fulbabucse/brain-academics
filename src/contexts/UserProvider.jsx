@@ -2,7 +2,9 @@ import React from "react";
 import { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -20,6 +22,8 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -37,6 +41,14 @@ const UserProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const signInGithubUser = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
+  const signInFacebookUser = () => {
+    return signInWithPopup(auth, facebookProvider);
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currUser) => {
       setUser(currUser);
@@ -48,8 +60,10 @@ const UserProvider = ({ children }) => {
     user,
     createUser,
     signInUser,
-    signInGoogleUser,
     signOutUser,
+    signInGoogleUser,
+    signInGithubUser,
+    signInFacebookUser,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>

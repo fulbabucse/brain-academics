@@ -2,12 +2,13 @@ import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaGoogle, FaFacebook } from "react-icons/fa";
+import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 const Login = () => {
-  const { signInUser, signInGoogleUser } = useContext(AuthContext);
+  const { signInUser, signInGoogleUser, signInGithubUser, signInFacebookUser } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
   const handleUserSignIn = (e) => {
     e.preventDefault();
@@ -28,10 +29,33 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInGoogleUser().then((res) => {
       console.log(res.user);
-      toast.success("Successfully logged with your Google account!!");
+      toast.success("Successfully logged with your Google Account!!");
     });
   };
-  const handleFacebookSignIn = () => {};
+
+  const handleGithubSignIn = () => {
+    signInGithubUser()
+      .then((res) => {
+        console.log(res.user);
+        toast.success("Successfully logged with your Github Account!!");
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
+  };
+
+  const handleFacebookSignIn = () => {
+    signInFacebookUser()
+      .then((res) => {
+        console.log(res.user);
+        toast.success("Successfully logged with your Facebook Account!!");
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
+  };
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
@@ -83,7 +107,7 @@ const Login = () => {
         <div className="relative flex items-center justify-center w-full mt-6 border border-t">
           <div className="absolute px-5 bg-white">Or</div>
         </div>
-        <div className="flex mt-4 gap-x-2">
+        <div className="flex flex-col mt-4 gap-y-2">
           <button
             onClick={handleGoogleSignIn}
             type="button"
@@ -92,6 +116,14 @@ const Login = () => {
             Continue with Google
             <FaGoogle className="ml-2"></FaGoogle>
           </button>
+          <button
+            onClick={handleGithubSignIn}
+            className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"
+          >
+            Continue with Github
+            <FaGithub className="ml-2"></FaGithub>
+          </button>
+
           <button
             onClick={handleFacebookSignIn}
             className="flex items-center justify-center w-full p-2 border border-gray-600 rounded-md focus:ring-2 focus:ring-offset-1 focus:ring-violet-600"

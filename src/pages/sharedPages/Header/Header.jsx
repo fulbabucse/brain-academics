@@ -81,7 +81,7 @@ function Header() {
                         {user?.displayName || "Profile"}
                       </Link>
                     </li>
-                    {user?.uid && user?.email ? (
+                    {user?.uid || user?.email ? (
                       <button
                         onClick={signOutUser}
                         className="btn btn-sm btn-secondary rounded-sm my-2"
