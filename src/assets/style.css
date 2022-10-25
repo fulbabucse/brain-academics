@@ -12,7 +12,15 @@
 
 .course-details-container {
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 8fr 4fr;
   gap: 10px;
   margin: 20px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .course-details-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
