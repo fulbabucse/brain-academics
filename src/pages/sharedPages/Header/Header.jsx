@@ -13,7 +13,7 @@ function Header() {
             <div>
               <Link
                 to="/"
-                className="text-3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
+                className="text-xl lg:3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
               >
                 Brains and Academics
               </Link>
@@ -35,22 +35,22 @@ function Header() {
             }`}
           >
             <ul className="items-center justify-center space-y-2 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
                 <Link to="/home">Home</Link>
               </li>
 
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
                 <Link to="/about">About</Link>
               </li>
 
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
                 <Link to="/courses">Courses</Link>
               </li>
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
                 <Link to="/blog">Blog</Link>
               </li>
 
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-md font-bold">
+              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
                 <Link to="/faq">FAQ</Link>
               </li>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "../../../assets/style.css";
 import { FaStar, FaInfoCircle } from "react-icons/fa";
 
@@ -21,7 +21,7 @@ const CourseDetails = () => {
     price,
     sub_title,
   } = courseDetailsData;
-  console.log(course_content);
+  console.log(id);
   return (
     <div className="course-details-container px-2 lg:px-20 my-4">
       <div className="text-slate-600">
@@ -64,9 +64,11 @@ const CourseDetails = () => {
             <h2 className="card-title">{course_name}</h2>
             <h4 className="text-xl font-bold">${price}</h4>
             <div className="card-actions">
-              <button className="btn btn-sm btn-outline w-full rounded-md btn-secondary">
-                Get Premium Access
-              </button>
+              <Link to={`/premium/${id}`} className="w-full">
+                <button className="btn btn-sm btn-outline w-full rounded-md btn-secondary">
+                  Get Premium Access
+                </button>
+              </Link>
             </div>
             <div className="text-center">
               <h4>15-Day Money-Back Guarantee</h4>

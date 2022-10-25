@@ -5,7 +5,7 @@ import { FaStar, FaBookReader } from "react-icons/fa";
 
 const Premium = () => {
   //   const [openTab, setOpenTab] = React.useState(1);
-  const courseDetailsData = useLoaderData()[0];
+  const premiumAccess = useLoaderData();
   const {
     id,
     category_id,
@@ -20,8 +20,7 @@ const Premium = () => {
     title,
     price,
     sub_title,
-  } = courseDetailsData;
-  console.log(course_content);
+  } = premiumAccess;
   return (
     <div className="course-details-container px-2 lg:px-20 my-4">
       <div className="text-slate-600">
@@ -340,14 +339,6 @@ const Premium = () => {
             </div>
           )}
         </div>
-      </div>
-
-      <div>
-        <h2>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis a
-          reprehenderit reiciendis accusantium voluptate explicabo totam
-          doloribus nam dolore repudiandae!
-        </h2>
       </div>
     </div>
   );
