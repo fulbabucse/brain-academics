@@ -8,9 +8,7 @@ const CourseDetails = () => {
   const courseDetailsData = useLoaderData()[0];
   const {
     id,
-    category_id,
     author,
-    course_content,
     course_name,
     author_img,
     picture,

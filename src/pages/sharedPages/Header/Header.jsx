@@ -13,7 +13,7 @@ function Header() {
             <div>
               <Link
                 to="/"
-                className="text-xl lg:3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
+                className="text-xl lg:text-3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
               >
                 Brains and Academics
               </Link>

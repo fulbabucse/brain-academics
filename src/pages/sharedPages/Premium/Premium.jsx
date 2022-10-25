@@ -7,22 +7,16 @@ const Premium = () => {
   //   const [openTab, setOpenTab] = React.useState(1);
   const premiumAccess = useLoaderData();
   const {
-    id,
-    category_id,
     author,
     course_content,
-    course_name,
     author_img,
-    picture,
     published_date,
     student,
     rating,
     title,
-    price,
-    sub_title,
   } = premiumAccess;
   return (
-    <div className="course-details-container px-2 lg:px-20 my-4">
+    <div className="px-2 lg:px-20 my-4">
       <div className="text-slate-600">
         <h2 className="text-xl lg:text-4xl font-bold mb-3">{title}</h2>
         <div className="flex gap-2">
