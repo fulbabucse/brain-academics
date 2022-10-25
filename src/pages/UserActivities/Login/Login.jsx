@@ -3,13 +3,16 @@ import { useContext } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 const Login = () => {
   const { signInUser, signInGoogleUser, signInGithubUser, signInFacebookUser } =
     useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleUserSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -19,16 +22,18 @@ const Login = () => {
     signInUser(email, password)
       .then((res) => {
         console.log(res.user);
+        navigate(from, { replace: true });
+        toast.success("Successfully logged your account!!");
       })
       .catch((err) => {
         console.error(err);
         setError(err.message);
-        toast.success("Successfully logged your account!!");
       });
   };
   const handleGoogleSignIn = () => {
     signInGoogleUser().then((res) => {
       console.log(res.user);
+      navigate(from, { replace: true });
       toast.success("Successfully logged with your Google Account!!");
     });
   };
@@ -37,6 +42,7 @@ const Login = () => {
     signInGithubUser()
       .then((res) => {
         console.log(res.user);
+        navigate(from, { replace: true });
         toast.success("Successfully logged with your Github Account!!");
       })
       .catch((err) => {
@@ -49,6 +55,7 @@ const Login = () => {
     signInFacebookUser()
       .then((res) => {
         console.log(res.user);
+        navigate(from, { replace: true });
         toast.success("Successfully logged with your Facebook Account!!");
       })
       .catch((err) => {
