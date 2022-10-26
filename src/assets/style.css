@@ -47,6 +47,15 @@
   object-fit: cover;
 }
 
+.activeRoute {
+  border-bottom: 2px solid white;
+  opacity: 0.9;
+}
+
+.activeCourse {
+  border-bottom: 2px solid pink;
+}
+
 @media only screen and (max-width: 768px) {
   .course-details-container {
     display: flex;

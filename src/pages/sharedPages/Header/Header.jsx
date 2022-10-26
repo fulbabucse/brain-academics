@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaTh, FaTimes } from "react-icons/fa";
 import UserThumb from "../../../assets/user2.png";
+import "../../../assets/style.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/UserProvider";
 import logo from "../../../assets/logo.png";
@@ -42,22 +43,57 @@ function Header() {
           >
             <ul className="items-center justify-center space-y-2 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <Link to="/home">Home</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "activeRoute" : undefined
+                  }
+                  to="/home"
+                >
+                  Home
+                </NavLink>
               </li>
 
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <Link to="/about">About</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "activeRoute" : undefined
+                  }
+                  to="/about"
+                >
+                  About
+                </NavLink>
               </li>
 
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <Link to="/courses">Courses</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "activeRoute" : undefined
+                  }
+                  to="/courses"
+                >
+                  Courses
+                </NavLink>
               </li>
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <Link to="/blog">Blog</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "activeRoute" : undefined
+                  }
+                  to="/blog"
+                >
+                  Blog
+                </NavLink>
               </li>
 
               <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <Link to="/faq">FAQ</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "activeRoute" : undefined
+                  }
+                  to="/faq"
+                >
+                  FAQ
+                </NavLink>
               </li>
 
               <li className="text-slate-500 text-center hover:text-slate-700 transition-all duration-500 uppercase text-sm font-bold">
