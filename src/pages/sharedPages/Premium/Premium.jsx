@@ -12,7 +12,7 @@ const Premium = () => {
       </h3>
       <img className="w-60 h-66" src={picture} alt={title} />
       <h3 className="text-xl lg:text-4xl font-bold text-slate-700">
-        Course Enrolled
+        Welcome, to Enroll in this Course.
       </h3>
     </div>
   );

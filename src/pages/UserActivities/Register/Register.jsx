@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updatesUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
   const handleUserRegister = (e) => {
     setError("");
@@ -26,6 +26,7 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("Successfully User Register !!");
+        handleUpdateUser(name, photoLink);
         form.reset();
       })
       .catch((err) => {
@@ -33,6 +34,17 @@ const Register = () => {
         setError(err.message);
       });
   };
+
+  const handleUpdateUser = (name, photoLink) => {
+    const userInfo = {
+      displayName: name,
+      photoURL: photoLink,
+    };
+    updatesUserProfile(userInfo)
+      .then((res) => {})
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
@@ -46,7 +58,7 @@ const Register = () => {
               htmlFor="name"
               className="block text-sm font-semibold text-gray-800"
             >
-              Name
+              Full Name
             </label>
             <input
               type="text"

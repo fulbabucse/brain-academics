@@ -154,7 +154,7 @@ function Header() {
                   </ul>
                 </div>
               </li>
-              <li>
+              <li className="text-center">
                 <ReactSwitch
                   onChange={toggleTheme}
                   checked={theme === "dark"}

@@ -11,11 +11,9 @@ const ThemeProvider = ({ children }) => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
   };
 
-  //   const themeInfo = { theme, toggleTheme };
+  const themeInfo = { theme, toggleTheme };
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={themeInfo}>{children}</ThemeContext.Provider>
   );
 };
 
