@@ -28,7 +28,6 @@ const CourseDetails = () => {
     course_overview,
     desc,
   } = courseDetailsData;
-  console.log(course_overview);
   return (
     <div className="course-details-container px-2 lg:px-20 my-4" ref={ref}>
       <div className="text-slate-600">

@@ -1,8 +1,9 @@
 .courses-container {
   display: grid;
   grid-template-columns: 2fr 8fr;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .course-thumb {
@@ -56,10 +57,23 @@
   border-bottom: 2px solid pink;
 }
 
+#dark {
+  background-color: black;
+}
+
+#light {
+  background-color: #fff;
+}
+
 @media only screen and (max-width: 768px) {
   .course-details-container {
     display: flex;
     flex-direction: column-reverse;
     gap: 10px;
+  }
+
+  .courses-container {
+    display: flex;
+    flex-direction: column;
   }
 }
