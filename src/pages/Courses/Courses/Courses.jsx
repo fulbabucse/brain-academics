@@ -9,8 +9,12 @@ const Courses = () => {
     <div className="courses-container px-2 lg:px-20">
       <div>
         {courses.map((course) => (
-          <p key={course.id}>
-            <Link to={`/course/${course.category_id}`}>{course.name}</Link>
+          <p key={course.id} className="my-2">
+            <Link to={`/course/${course.category_id}`}>
+              <button className="btn btn-sm w-full btn-outline btn-secondary rounded-sm">
+                {course.name}
+              </button>
+            </Link>
           </p>
         ))}
       </div>

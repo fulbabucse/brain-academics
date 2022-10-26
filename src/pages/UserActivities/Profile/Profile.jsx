@@ -1,18 +1,53 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/UserProvider";
 import UserThumb from "../../../assets/user2.png";
+import toast from "react-hot-toast";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user, updatesUserProfile, changeUserPassword, deleteUserAccount } =
+    useContext(AuthContext);
   const [openTab, setOpenTab] = React.useState(1);
-  const handleUserUpdatesForm = (e) => {};
-  const handleUpdatePassword = () => {};
-  const handleDeleteUser = () => {};
+
+  const userNameRef = useRef(user?.displayName);
+  const userPhotoRef = useRef(user?.photoURL);
+  const userPasswordRef = useRef();
+
+  const handleUserUpdatesForm = (e) => {
+    e.preventDefault();
+    const name = userNameRef.current.value;
+    const photoLink = userPhotoRef.current.value;
+    handleUpdateUser(name, photoLink);
+    toast.success("Profile updates successfully!!");
+  };
+
+  const handleUpdateUser = (name, photoLink) => {
+    const userInfo = {
+      displayName: name,
+      photoURL: photoLink,
+    };
+    updatesUserProfile(userInfo)
+      .then((res) => {})
+      .catch((err) => console.error(err));
+  };
+
+  const handleUpdatePassword = (e) => {
+    e.preventDefault();
+    const password = userPasswordRef.current.value;
+    changeUserPassword(password)
+      .then((res) => {})
+      .catch((err) => console.error(err));
+    console.log(password);
+    toast.success("Successfully changed your password !!");
+  };
+  const handleDeleteUser = () => {
+    deleteUserAccount();
+    toast.error("Successfully delete user Account !!");
+  };
   return (
     <>
       <div className="flex flex-col items-center lg:w-2/4 mx-auto px-2 lg:mt-3">
-        <div>
+        <div className="flex flex-col items-center">
           <img
             style={{
               width: "160px",
@@ -23,7 +58,9 @@ const Profile = () => {
             src={user?.photoURL || UserThumb}
             alt={user?.displayName}
           />
-          <h3 className="text-white text-4xl font-bold">{user?.displayName}</h3>
+          <h3 className="text-slate-700 text-4xl font-bold">
+            {user?.displayName}
+          </h3>
         </div>
         <div className="w-full">
           <ul
@@ -100,6 +137,7 @@ const Profile = () => {
               </a>
             </li>
           </ul>
+
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto">
               <div className="tab-content tab-space">
@@ -140,6 +178,7 @@ const Profile = () => {
                     </a>
                   </p>
                 </div>
+
                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                   <form onSubmit={handleUserUpdatesForm}>
                     <div className="mb-2">
@@ -152,6 +191,7 @@ const Profile = () => {
                       <input
                         type="text"
                         name="name"
+                        ref={userNameRef}
                         defaultValue={user?.displayName}
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         required
@@ -168,6 +208,7 @@ const Profile = () => {
                       <input
                         type="text"
                         name="photoUrl"
+                        ref={userPhotoRef}
                         defaultValue={user?.photoURL}
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         required
@@ -188,21 +229,6 @@ const Profile = () => {
                           user?.email || "info@brains-academics.com"
                         }
                         disabled
-                        className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                        required
-                      />
-                    </div>
-                    <div className="mb-2">
-                      <label
-                        htmlFor="contact"
-                        className="block text-sm font-semibold text-gray-800"
-                      >
-                        Contact Number
-                      </label>
-                      <input
-                        type="text"
-                        name="number"
-                        defaultValue="+8801700-000000"
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         required
                       />
@@ -246,6 +272,7 @@ const Profile = () => {
                       <input
                         type="password"
                         name="password"
+                        ref={userPasswordRef}
                         className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                         required
                       />

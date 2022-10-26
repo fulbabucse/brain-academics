@@ -2,6 +2,7 @@ import React from "react";
 import { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   FacebookAuthProvider,
   getAuth,
   GithubAuthProvider,
@@ -10,6 +11,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { useState } from "react";
@@ -64,6 +67,18 @@ const UserProvider = ({ children }) => {
     return () => unSubscribe();
   }, []);
 
+  const updatesUserProfile = (updatesInfo) => {
+    return updateProfile(auth.currentUser, updatesInfo);
+  };
+
+  const changeUserPassword = (newPassword) => {
+    return updatePassword(auth.currentUser, newPassword);
+  };
+
+  const deleteUserAccount = () => {
+    return deleteUser(auth.currentUser);
+  };
+
   const userInfo = {
     user,
     loading,
@@ -72,7 +87,10 @@ const UserProvider = ({ children }) => {
     signOutUser,
     signInGoogleUser,
     signInGithubUser,
+    deleteUserAccount,
     signInFacebookUser,
+    updatesUserProfile,
+    changeUserPassword,
   };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
