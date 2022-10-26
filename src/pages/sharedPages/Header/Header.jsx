@@ -22,7 +22,7 @@ function Header() {
             <div>
               <Link
                 to="/"
-                className="flex text-xl lg:text-3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
+                className="flex items-center gap-2 text-xl lg:text-3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
               >
                 <img className="w-10 h-10 rounded-full" src={logo} alt="Logo" />{" "}
                 Brains and Academics
