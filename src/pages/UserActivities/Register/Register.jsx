@@ -8,12 +8,19 @@ const Register = () => {
   const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const handleUserRegister = (e) => {
+    setError("");
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const photoLink = form.photoUrl.value;
     const email = form.email.value;
     const password = form.password.value;
+    const confirm = form.confirm.value;
+
+    if (password !== confirm) {
+      setError("Password did not match");
+      return;
+    }
 
     createUser(email, password)
       .then((res) => {
@@ -88,6 +95,21 @@ const Register = () => {
             <input
               type="password"
               name="password"
+              className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              required
+            />
+          </div>
+
+          <div className="mb-2">
+            <label
+              htmlFor="password"
+              className="block text-sm font-semibold text-gray-800"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              name="confirm"
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               required
             />

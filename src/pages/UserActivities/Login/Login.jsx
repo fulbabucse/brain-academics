@@ -14,6 +14,7 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const handleUserSignIn = (e) => {
+    setError("");
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;

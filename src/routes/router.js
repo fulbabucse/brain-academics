@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import About from "../pages/About/About";
