@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "../../../assets/style.css";
-import { FaStar, FaInfoCircle } from "react-icons/fa";
+import { FaStar, FaInfoCircle, FaBookReader, FaCheck } from "react-icons/fa";
 
 const CourseDetails = () => {
   const courseDetailsData = useLoaderData()[0];
@@ -16,9 +16,10 @@ const CourseDetails = () => {
     rating,
     title,
     price,
-    sub_title,
+    course_overview,
+    desc,
   } = courseDetailsData;
-  console.log(id);
+  console.log(course_overview);
   return (
     <div className="course-details-container px-2 lg:px-20 my-4">
       <div className="text-slate-600">
@@ -48,7 +49,18 @@ const CourseDetails = () => {
           <h4 className="text-xl font-bold flex gap-1 items-center">
             <FaInfoCircle></FaInfoCircle> Descriptions
           </h4>
-          <p>{sub_title}</p>
+          <p>{desc}</p>
+          <h4 className="text-xl font-bold flex gap-1 items-center mt-4">
+            <FaBookReader></FaBookReader> Everything you will learn from this
+            course
+          </h4>
+          <div className="mt-1">
+            {course_overview.map((item, idx) => (
+              <p key={idx} className="flex gap-1 items-center">
+                <FaCheck></FaCheck> {item}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -61,7 +73,7 @@ const CourseDetails = () => {
             <h2 className="card-title">{course_name}</h2>
             <h4 className="text-xl font-bold">${price}</h4>
             <div className="card-actions">
-              <Link to={`/course/premium/${id}`} className="w-full">
+              <Link to={`/course/checkout/${id}`} className="w-full">
                 <button className="btn btn-sm btn-outline w-full rounded-md btn-secondary">
                   Get Premium Access
                 </button>

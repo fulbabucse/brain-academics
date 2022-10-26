@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import About from "../pages/About/About";
@@ -6,6 +7,7 @@ import Courses from "../pages/Courses/Courses/Courses";
 import FAQ from "../pages/FAQ/FAQ";
 import Home from "../pages/Home/Home";
 import CourseDetails from "../pages/sharedPages/CourseDetails/CourseDetails";
+import Error from "../pages/sharedPages/Error/Error";
 import Premium from "../pages/sharedPages/Premium/Premium";
 import Login from "../pages/UserActivities/Login/Login";
 import Profile from "../pages/UserActivities/Profile/Profile";
@@ -29,13 +31,15 @@ export const router = createBrowserRouter([
       { path: "faq", element: <FAQ></FAQ> },
       {
         path: "/course/:id",
-        loader: ({ params }) =>
+        errorElement: <Error></Error>,
+        loader: async ({ params }) =>
           fetch(`http://localhost:5000/course/${params.id}`),
         element: <CourseDetails></CourseDetails>,
       },
       {
-        path: "/course/premium/:id",
-        loader: ({ params }) =>
+        path: "/course/checkout/:id",
+        errorElement: <Error></Error>,
+        loader: async ({ params }) =>
           fetch(`http://localhost:5000/single-courses/${params.id}`),
         element: (
           <PrivateRoute>
@@ -55,4 +59,5 @@ export const router = createBrowserRouter([
       { path: "register", element: <Register></Register> },
     ],
   },
+  { path: "*", element: <Error></Error> },
 ]);

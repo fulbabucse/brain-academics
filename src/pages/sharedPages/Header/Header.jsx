@@ -4,21 +4,23 @@ import { FaTh, FaTimes } from "react-icons/fa";
 import UserThumb from "../../../assets/user2.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/UserProvider";
+import logo from "../../../assets/logo.png";
 
 function Header() {
   const { user, signOutUser } = useContext(AuthContext);
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <nav className="w-full bg-slate-700">
+    <nav className="w-full bg-pink-500">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <div>
               <Link
                 to="/"
-                className="text-xl lg:text-3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
+                className="flex text-xl lg:text-3xl font-bold text-white/80 hover:text-white transition-colors duration-400"
               >
+                <img className="w-10 h-10 rounded-full" src={logo} alt="Logo" />{" "}
                 Brains and Academics
               </Link>
             </div>
