@@ -145,11 +145,13 @@ function Header() {
                       </Link>
                     )}
 
-                    <Link to="/register">
-                      <button className="btn btn-sm btn-outline rounded-sm btn-secondary w-full">
-                        Register
-                      </button>
-                    </Link>
+                    {!user?.uid && (
+                      <Link to="/register">
+                        <button className="btn btn-sm btn-outline rounded-sm btn-secondary w-full">
+                          Register
+                        </button>
+                      </Link>
+                    )}
                   </ul>
                 </div>
               </li>

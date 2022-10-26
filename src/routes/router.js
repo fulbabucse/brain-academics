@@ -23,7 +23,10 @@ export const router = createBrowserRouter([
       { path: "about", element: <About></About> },
       {
         path: "courses",
-        loader: () => fetch("http://localhost:5000/courseCategory"),
+        loader: () =>
+          fetch(
+            "https://brains-and-academics-server.vercel.app/courseCategory"
+          ),
         element: <Courses></Courses>,
       },
       { path: "blog", element: <Blog></Blog> },
@@ -32,14 +35,18 @@ export const router = createBrowserRouter([
         path: "/course/:id",
         errorElement: <Error></Error>,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(
+            `https://brains-and-academics-server.vercel.app/course/${params.id}`
+          ),
         element: <CourseDetails></CourseDetails>,
       },
       {
         path: "/course/checkout/:id",
         errorElement: <Error></Error>,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/single-courses/${params.id}`),
+          fetch(
+            `https://brains-and-academics-server.vercel.app/single-courses/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <Premium></Premium>
