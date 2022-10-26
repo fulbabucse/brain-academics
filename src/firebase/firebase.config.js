@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCbu86F9oRY0O4GONypltqHNzKRxH5Z60s",
-  authDomain: "brains-and-academics.firebaseapp.com",
-  projectId: "brains-and-academics",
-  storageBucket: "brains-and-academics.appspot.com",
-  messagingSenderId: "696181894906",
-  appId: "1:696181894906:web:0cf844617362a8d156e343",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 const app = initializeApp(firebaseConfig);

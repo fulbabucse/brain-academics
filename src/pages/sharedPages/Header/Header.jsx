@@ -76,11 +76,19 @@ function Header() {
                     tabIndex={0}
                     className="mt-3 p-3 menu menu-compact dropdown-content bg-base-100 shadow-xl rounded-md w-52"
                   >
-                    <li>
-                      <Link to="/profile" className="justify-center">
-                        {user?.displayName || "Profile"}
-                      </Link>
-                    </li>
+                    {user?.uid ? (
+                      <li>
+                        <Link to="/profile" className="justify-center">
+                          {user?.displayName || "User Profile"}
+                        </Link>
+                      </li>
+                    ) : (
+                      <li>
+                        <Link to="/profile" className="justify-center">
+                          Profile
+                        </Link>
+                      </li>
+                    )}
                     {user?.uid || user?.email ? (
                       <button
                         onClick={signOutUser}

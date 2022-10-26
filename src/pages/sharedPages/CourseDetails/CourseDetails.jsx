@@ -4,7 +4,6 @@ import "../../../assets/style.css";
 import { FaStar, FaInfoCircle } from "react-icons/fa";
 
 const CourseDetails = () => {
-  //   const [openTab, setOpenTab] = React.useState(1);
   const courseDetailsData = useLoaderData()[0];
   const {
     id,
@@ -62,7 +61,7 @@ const CourseDetails = () => {
             <h2 className="card-title">{course_name}</h2>
             <h4 className="text-xl font-bold">${price}</h4>
             <div className="card-actions">
-              <Link to={`/premium/${id}`} className="w-full">
+              <Link to={`/course/premium/${id}`} className="w-full">
                 <button className="btn btn-sm btn-outline w-full rounded-md btn-secondary">
                   Get Premium Access
                 </button>
