@@ -15,7 +15,7 @@ const Blog = () => {
 
       <div className="w-full lg:w-2/4 mx-auto px-2 my-2 text-slate-700">
         <h3 className="text-xl font-bold italic">
-          Q1: Why are you using firebase? What other options do you have to
+          Q2: Why are you using firebase? What other options do you have to
           implement authentication?
         </h3>
         <p className="text-md font-semibold">
@@ -29,7 +29,7 @@ const Blog = () => {
 
       <div className="w-full lg:w-2/4 mx-auto px-2 my-2 text-slate-700">
         <h3 className="text-xl font-bold italic">
-          Q1: How does the private route work??
+          Q3: How does the private route work??
         </h3>
         <p className="text-md font-semibold">
           <strong className="italic">Answer: </strong>The private route
@@ -43,7 +43,7 @@ const Blog = () => {
 
       <div className="w-full lg:w-2/4 mx-auto px-2 my-2 text-slate-700">
         <h3 className="text-xl font-bold italic">
-          Q1: What is Node? How does Node work?
+          Q4: What is Node? How does Node work?
         </h3>
         <p className="text-md font-semibold">
           <strong className="italic">Answer: </strong>It is a used as backend
