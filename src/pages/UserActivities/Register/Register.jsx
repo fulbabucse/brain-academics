@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 const Register = () => {
-  const { createUser, updatesUserProfile } = useContext(AuthContext);
+  const { createUser, updatesUserProfile, verifyUserEmail } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
   const handleUserRegister = (e) => {
     setError("");
@@ -25,14 +26,21 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
-        toast.success("Successfully User Register !!");
         handleUpdateUser(name, photoLink);
         form.reset();
+        handleEmailVerify();
+        toast.success("Please check your email and verify");
       })
       .catch((err) => {
         console.error(err);
         setError(err.message);
       });
+  };
+
+  const handleEmailVerify = () => {
+    verifyUserEmail()
+      .then((res) => {})
+      .catch((err) => console.error(err));
   };
 
   const handleUpdateUser = (name, photoLink) => {

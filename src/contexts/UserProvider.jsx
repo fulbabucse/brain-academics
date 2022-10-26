@@ -8,6 +8,8 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -79,6 +81,14 @@ const UserProvider = ({ children }) => {
     return deleteUser(auth.currentUser);
   };
 
+  const verifyUserEmail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
+
+  const userPasswordReset = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   const userInfo = {
     user,
     loading,
@@ -86,6 +96,8 @@ const UserProvider = ({ children }) => {
     createUser,
     signInUser,
     signOutUser,
+    verifyUserEmail,
+    userPasswordReset,
     signInGoogleUser,
     signInGithubUser,
     deleteUserAccount,

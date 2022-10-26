@@ -7,9 +7,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/UserProvider";
 
 const Login = () => {
-  const { signInUser, signInGoogleUser, signInGithubUser, signInFacebookUser } =
-    useContext(AuthContext);
+  const {
+    signInUser,
+    signInGoogleUser,
+    signInGithubUser,
+    signInFacebookUser,
+    userPasswordReset,
+  } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -64,6 +70,26 @@ const Login = () => {
         setError(err.message);
       });
   };
+
+  const handleBlurEmailAddress = (e) => {
+    const email = e.target.value;
+    setEmailAddress(email);
+  };
+
+  const handleResetPassword = () => {
+    if (!emailAddress) {
+      toast.error("Please enter your email address");
+      return;
+    }
+    userPasswordReset(emailAddress)
+      .then((res) => {
+        toast.success(
+          "Password reset email has sent, Please check Inbox or Spam"
+        );
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
@@ -84,6 +110,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
+              onBlur={handleBlurEmailAddress}
               className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               required
             />
@@ -102,9 +129,7 @@ const Login = () => {
               required
             />
           </div>
-          <span className="text-xs text-purple-600 hover:underline">
-            Forget Password?
-          </span>
+
           <div className="mt-3">
             <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
               Log In
@@ -112,6 +137,9 @@ const Login = () => {
           </div>
           <p className="text-red-400 mt-1">{error}</p>
         </form>
+        <span className="text-sm text-purple-600 mt-2">
+          <button onClick={handleResetPassword}>Forget Password?</button>
+        </span>
         <div className="relative flex items-center justify-center w-full mt-6 border border-t">
           <div className="absolute px-5 bg-white">Or</div>
         </div>
