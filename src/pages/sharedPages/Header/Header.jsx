@@ -61,17 +61,6 @@ function Header() {
                   className={({ isActive }) =>
                     isActive ? "activeRoute" : undefined
                   }
-                  to="/about"
-                >
-                  About
-                </NavLink>
-              </li>
-
-              <li className="text-white/90 text-center hover:text-white transition-all duration-500 uppercase text-sm font-bold">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? "activeRoute" : undefined
-                  }
                   to="/courses"
                 >
                   Courses

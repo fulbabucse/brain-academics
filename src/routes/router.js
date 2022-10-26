@@ -8,6 +8,7 @@ import Home from "../pages/Home/Home";
 import CourseDetails from "../pages/sharedPages/CourseDetails/CourseDetails";
 import Error from "../pages/sharedPages/Error/Error";
 import Premium from "../pages/sharedPages/Premium/Premium";
+import TermsConditions from "../pages/sharedPages/TermsConditions/TermsConditions";
 import Login from "../pages/UserActivities/Login/Login";
 import Profile from "../pages/UserActivities/Profile/Profile";
 import Register from "../pages/UserActivities/Register/Register";
@@ -20,7 +21,6 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home></Home> },
       { path: "home", element: <Home></Home> },
-      { path: "about", element: <About></About> },
       {
         path: "courses",
         loader: () =>
@@ -63,6 +63,10 @@ export const router = createBrowserRouter([
       },
       { path: "login", element: <Login></Login> },
       { path: "register", element: <Register></Register> },
+      {
+        path: "terms-conditions",
+        element: <TermsConditions></TermsConditions>,
+      },
     ],
   },
   { path: "*", element: <Error></Error> },
