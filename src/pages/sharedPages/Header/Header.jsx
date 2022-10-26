@@ -12,7 +12,6 @@ import { ThemeContext } from "../../../contexts/ThemeProvider";
 function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user, signOutUser } = useContext(AuthContext);
-  const [enabled, setEnabled] = useState(false);
   const [navbar, setNavbar] = useState(false);
 
   return (
