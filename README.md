@@ -17,7 +17,6 @@ My project is about online web learning. There are several types of courses. Our
 
 - JSX
 - Tailwind
-- DaisyUi (Tailwind Component)
 - API
 - React JS
 - React Router

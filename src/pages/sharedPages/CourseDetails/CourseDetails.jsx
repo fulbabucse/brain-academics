@@ -29,13 +29,14 @@ const CourseDetails = () => {
     desc,
   } = courseDetailsData;
   return (
-    <div className="course-details-container px-2 lg:px-20 my-4" ref={ref}>
-      <div className="text-slate-600">
+    <div className="course-details-container px-2 lg:px-20 my-4">
+      <div className="text-slate-600" ref={ref}>
         <div className="flex justify-between">
           <h2 className="text-2xl text-center lg:text-start lg:text-4xl font-bold mb-3">
             {title}
           </h2>
-          <Pdf targetRef={ref} filename="details.pdf">
+
+          <Pdf targetRef={ref} filename="download.pdf" scale={0.95}>
             {({ toPdf }) => (
               <button
                 onClick={toPdf}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
-  const { id, name, img, category_id, price } = course;
+  const { name, img, category_id, price } = course;
   return (
     <div>
       <div className="card card-compact bg-base-100 shadow-xl rounded-sm">
