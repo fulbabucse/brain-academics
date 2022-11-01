@@ -34,7 +34,11 @@ const Login = () => {
       })
       .catch((err) => {
         console.error(err);
-        setError(err.message);
+        if (err.message === "Firebase: Error (auth/user-not-found).") {
+          setError("User not found");
+        } else if (err.message === "Firebase: Error (auth/wrong-password).") {
+          setError("You are entering the wrong password");
+        }
       });
   };
   const handleGoogleSignIn = () => {

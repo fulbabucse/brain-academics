@@ -33,7 +33,14 @@ const Register = () => {
       })
       .catch((err) => {
         console.error(err);
-        setError(err.message);
+        if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+          setError("This Email already used");
+        } else if (
+          err.message ===
+          "Firebase: Password should be at least 6 characters (auth/weak-password)."
+        ) {
+          setError("Password should be at least 6 characters");
+        }
       });
   };
 
@@ -159,7 +166,7 @@ const Register = () => {
             </button>
           </div>
         </form>
-        <p className="text-red-400">{error}</p>
+        <p className="text-red-500 mt-1">{error}</p>
 
         <p className="mt-3 text-xs font-light text-center text-gray-700">
           {" "}
